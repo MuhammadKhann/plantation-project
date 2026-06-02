@@ -258,7 +258,7 @@ export default function App() {
               className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]"
             >
                <img 
-                  src="https://images.unsplash.com/photo-1542601098367-f39b6920fde6?q=80&w=1200&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" 
                   alt="Community members planting saplings together" 
                   className="w-full h-full object-cover"
                />
@@ -434,10 +434,10 @@ export default function App() {
               <img src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=800&auto=format&fit=crop" alt="Forest scene" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg h-40 md:h-auto">
-              <img src="https://images.unsplash.com/photo-1416879598555-33e4562c9d64?q=80&w=800&auto=format&fit=crop" alt="Close up of leaves" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop" alt="Close up of leaves" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="md:col-span-2 rounded-2xl overflow-hidden shadow-lg h-48">
-              <img src="https://images.unsplash.com/photo-1532153259564-9b5daeb9bfff?q=80&w=1200&auto=format&fit=crop" alt="Team planting outdoors" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200&auto=format&fit=crop" alt="Team planting outdoors" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
         </div>
