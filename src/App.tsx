@@ -4,7 +4,7 @@
  */
 
 import { motion } from "motion/react";
-import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote, Menu, X, Instagram, Facebook } from "lucide-react";
+import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote, Menu, X, Instagram, Facebook, CheckCircle, Droplets, Shield, ClipboardList, Map, HandHeart } from "lucide-react";
 import { useState } from "react";
 
 export default function App() {
@@ -41,7 +41,7 @@ export default function App() {
           </div>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex gap-6 text-sm font-medium text-stone-600">
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
@@ -52,6 +52,13 @@ export default function App() {
                 {link.name}
               </a>
             ))}
+            <a
+              href="#donate"
+              onClick={(e) => handleScrollTo(e, "#donate")}
+              className="px-5 py-2.5 bg-emerald-700 text-white rounded-full hover:bg-emerald-800 transition shadow-sm font-medium"
+            >
+              Join Now
+            </a>
           </div>
 
           {/* Mobile Nav Toggle */}
@@ -81,6 +88,13 @@ export default function App() {
                   {link.name}
                 </a>
               ))}
+              <a
+                href="#donate"
+                onClick={(e) => handleScrollTo(e, "#donate")}
+                className="block p-3 mt-4 bg-emerald-700 text-white rounded-xl hover:bg-emerald-800 transition shadow-sm font-medium"
+              >
+                Join Plantation Drive
+              </a>
             </div>
           </motion.div>
         )}
@@ -107,20 +121,29 @@ export default function App() {
               Civics & Community Management Project
             </span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-stone-900 tracking-tight leading-tight mb-6">
-              Planting Today for a <br/>
-              <span className="text-emerald-700">Greener Tomorrow</span>
+              Plant Today. <span className="text-emerald-700">Protect Tomorrow.</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Our initiative to restore local ecosystems, promote civic responsibility, and build a sustainable community through tree plantation.
+              Rooted Community is a tree plantation project that connects students, volunteers, and communities to plant trees, track plantation activity, and spread environmental awareness.
             </p>
-            <a 
-              href="#about"
-              onClick={(e) => handleScrollTo(e, "#about")}
-              className="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-full font-medium hover:bg-emerald-800 transition-colors shadow-lg shadow-emerald-900/20"
-            >
-              Discover Our Project
-              <ArrowDown className="h-4 w-4" />
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href="#donate"
+                onClick={(e) => handleScrollTo(e, "#donate")}
+                className="inline-flex items-center justify-center gap-2 bg-emerald-700 text-white px-8 py-4 rounded-full font-medium hover:bg-emerald-800 transition-colors shadow-lg shadow-emerald-900/20 w-full sm:w-auto text-lg"
+              >
+                Join as Volunteer
+                <HandHeart className="h-5 w-5" />
+              </a>
+              <a 
+                href="#events"
+                onClick={(e) => handleScrollTo(e, "#events")}
+                className="inline-flex items-center justify-center gap-2 bg-white text-emerald-800 border-2 border-emerald-100 px-8 py-4 rounded-full font-medium hover:bg-emerald-50 hover:border-emerald-200 transition-colors w-full sm:w-auto text-lg"
+              >
+                View Plantation Drives
+                <ArrowDown className="h-5 w-5" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -130,10 +153,10 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-stone-100">
             {[
-              { icon: <Sprout className="h-6 w-6 text-emerald-600" />, count: "156", label: "Trees Planted" },
-              { icon: <Users className="h-6 w-6 text-emerald-600" />, count: "42", label: "Volunteers" },
-              { icon: <Award className="h-6 w-6 text-emerald-600" />, count: "12", label: "Native Species" },
-              { icon: <Heart className="h-6 w-6 text-emerald-600" />, count: "8", label: "Events Hosted" }
+              { icon: <Sprout className="h-6 w-6 text-emerald-600" />, count: "250+", label: "Trees Planted" },
+              { icon: <Users className="h-6 w-6 text-emerald-600" />, count: "80+", label: "Volunteers" },
+              { icon: <Calendar className="h-6 w-6 text-emerald-600" />, count: "12", label: "Plantation Drives" },
+              { icon: <Map className="h-6 w-6 text-emerald-600" />, count: "Multan", label: "Areas Covered" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx}
@@ -154,8 +177,60 @@ export default function App() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-24 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-4">How It Works</h2>
+            <p className="text-stone-600 text-lg">Getting involved is simple and impactful.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12 relative">
+            <div className="hidden md:block absolute top-12 left-[16.6%] right-[16.6%] h-0.5 bg-emerald-200/50 -z-10"></div>
+            {[
+              {
+                step: "1",
+                icon: <ClipboardList className="h-8 w-8 text-emerald-700" />,
+                title: "Register as a volunteer",
+                desc: "Sign up through our platform or WhatsApp to get notified about upcoming plantation campaigns."
+              },
+              {
+                step: "2",
+                icon: <Users className="h-8 w-8 text-emerald-700" />,
+                title: "Join a plantation drive",
+                desc: "Meet us at the designated location with your enthusiasm. We provide the tools and saplings!"
+              },
+              {
+                step: "3",
+                icon: <CheckCircle className="h-8 w-8 text-emerald-700" />,
+                title: "Plant & upload progress",
+                desc: "Plant a tree, document your contribution, and help us maintain local greenery."
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative bg-white p-8 rounded-2xl shadow-sm border border-stone-100 text-center z-10"
+              >
+                <div className="w-16 h-16 mx-auto bg-emerald-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                  {item.icon}
+                </div>
+                <div className="absolute -top-4 -right-4 w-10 h-10 bg-emerald-600 text-white font-bold rounded-full flex items-center justify-center border-4 border-stone-50">
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-display font-semibold text-stone-900 mb-3">{item.title}</h3>
+                <p className="text-stone-600 leading-relaxed text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
-      <section id="about" className="py-24 bg-stone-50 relative">
+      <section id="about" className="py-24 bg-white relative border-t border-stone-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -165,14 +240,14 @@ export default function App() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-6">
-                Why We Started This Journey
+                About The Initiative
               </h2>
-              <div className="w-12 h-1 bg-amber-700 mb-6"></div>
+              <div className="w-12 h-1 bg-emerald-600 mb-6"></div>
               <p className="text-stone-600 text-lg mb-6 leading-relaxed">
-                As part of our Civics and Community Management curriculum, we realized that true civic engagement extends beyond the classroom. It's about taking actionable steps to improve the environment we all share.
+                Rooted Community is a tree plantation initiative focused on increasing environmental awareness and encouraging community participation.
               </p>
               <p className="text-stone-600 text-lg leading-relaxed">
-                Trees are the lungs of our community. By organizing this plantation drive, we aim to reduce our local carbon footprint, enhance soil stability, and foster a sense of shared responsibility among students and teachers alike.
+                The project helps organize plantation drives, involve volunteers, and promote long-term care of planted trees, ensuring our green spaces thrive for generations.
               </p>
             </motion.div>
             <motion.div 
@@ -183,41 +258,31 @@ export default function App() {
               className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]"
             >
                <img 
-                  src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=1200&auto=format&fit=crop" 
-                  alt="Sapling being planted in soil" 
+                  src="https://images.unsplash.com/photo-1542601098367-f39b6920fde6?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Community members planting saplings together" 
                   className="w-full h-full object-cover"
                />
-               <div className="absolute inset-0 bg-stone-900/10 hover:bg-transparent transition-colors duration-500"></div>
+               <div className="absolute inset-0 bg-stone-900/5 hover:bg-transparent transition-colors duration-500"></div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Goals / Impact Section */}
-      <section id="impact" className="py-24 bg-emerald-900 text-stone-50">
+      {/* Why Tree Plantation Matters Section */}
+      <section id="impact" className="py-24 bg-stone-50 border-t border-stone-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Our Objectives</h2>
-            <p className="text-emerald-100 text-lg">What we hope to achieve by the end of our civic campaign.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Why It Matters</h2>
+            <p className="text-stone-600 text-lg">Every sapling we plant has a ripple effect on our ecosystem.</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                icon: <TreePine className="h-8 w-8 text-amber-400" />,
-                title: "Plant 100+ Trees",
-                desc: "Focusing on native species that thrive in our local climate and support local wildlife."
-              },
-              {
-                icon: <Users className="h-8 w-8 text-amber-400" />,
-                title: "Community Unity",
-                desc: "Bringing classmates, teachers, and local staff together for a common, purposeful cause."
-              },
-              {
-                icon: <Globe className="h-8 w-8 text-amber-400" />,
-                title: "Environmental Education",
-                desc: "Raising awareness about deforestation and the vital role of urban greenery."
-              }
+              { icon: <Heart className="h-6 w-6 text-emerald-600" />, title: "Reduces Heat & Pollution", desc: "Trees act as natural air conditioners and absorb harmful pollutants." },
+              { icon: <Sprout className="h-6 w-6 text-emerald-600" />, title: "Improves Air Quality", desc: "Generating fresh oxygen and making our cities more breathable." },
+              { icon: <Globe className="h-6 w-6 text-emerald-600" />, title: "Supports Biodiversity", desc: "Providing shelter, food, and habitats for local wildlife and birds." },
+              { icon: <Users className="h-6 w-6 text-emerald-600" />, title: "Community Participation", desc: "Uniting students, teachers, and locals under a shared mission." },
+              { icon: <Award className="h-6 w-6 text-emerald-600" />, title: "Environmental Awareness", desc: "Fostering a culture of responsibility for the planet's future." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -225,15 +290,67 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-emerald-800/50 border border-emerald-700/50 p-8 rounded-2xl text-center hover:bg-emerald-800 transition-colors"
+                className="bg-white border border-stone-200 p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow"
               >
-                <div className="mx-auto bg-emerald-900 w-16 h-16 flex items-center justify-center rounded-full mb-6">
+                <div className="bg-emerald-50 p-3 rounded-lg flex-shrink-0">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-3">{item.title}</h3>
-                <p className="text-emerald-100/80 leading-relaxed">{item.desc}</p>
+                <div>
+                  <h3 className="text-lg font-display font-semibold mb-2 text-stone-900">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* After Plantation Care */}
+      <section className="py-24 bg-emerald-900 text-stone-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]"
+            >
+               <img 
+                  src="https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Watering a newly planted sapling" 
+                  className="w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply"></div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                After Plantation Care
+              </h2>
+              <p className="text-emerald-100/90 text-lg mb-8 leading-relaxed">
+                Most plantation projects fail because trees are planted but not maintained. We take our responsibility seriously by ensuring long-term survival.
+              </p>
+              <ul className="space-y-6">
+                {[
+                  { icon: <Droplets className="h-6 w-6 text-amber-400" />, text: "Water regularly, especially during dry seasons" },
+                  { icon: <Shield className="h-6 w-6 text-amber-400" />, text: "Protect young plants from harsh weather and grazers" },
+                  { icon: <Sprout className="h-6 w-6 text-amber-400" />, text: "Monitor growth and prune safely when needed" },
+                  { icon: <CheckCircle className="h-6 w-6 text-amber-400" />, text: "Assign volunteers for weekly follow-ups" }
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-4">
+                    <div className="flex-shrink-0 bg-emerald-800 p-2 rounded-full border border-emerald-700/50">
+                      {item.icon}
+                    </div>
+                    <span className="text-lg font-medium text-emerald-50">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -249,11 +366,11 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
-                title: "Spring Plantation Drive",
-                date: "March 15, 2024 • 9:00 AM",
-                location: "Community Central Park",
-                mapQuery: "Central+Park,+NY",
-                desc: "Help us plant 50 native saplings in the main park. Tools and refreshments will be provided."
+                title: "Air University Plantation Drive",
+                date: "June 25, 2026 • 9:00 AM",
+                location: "Air University Multan Campus",
+                mapQuery: "Air+University+Multan+Campus",
+                desc: "Help us reach our goal of 50 trees on campus. Registration is open to all students and faculty."
               },
               {
                 title: "Sapling Maintenance Day",
