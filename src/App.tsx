@@ -18,6 +18,18 @@ export default function App() {
     { name: "Donate", href: "#donate" },
   ];
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      // Offset for the fixed navigation header (64px)
+      const y = element.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-emerald-200 overflow-x-hidden">
       {/* Navigation */}
@@ -31,7 +43,12 @@ export default function App() {
           {/* Desktop Nav */}
           <div className="hidden md:flex gap-6 text-sm font-medium text-stone-600">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="hover:text-emerald-700 transition">
+              <a 
+                key={link.name} 
+                href={link.href} 
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className="hover:text-emerald-700 transition"
+              >
                 {link.name}
               </a>
             ))}
@@ -58,7 +75,7 @@ export default function App() {
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleScrollTo(e, link.href)}
                   className="block p-2 hover:text-emerald-700 hover:bg-stone-100 rounded-lg transition"
                 >
                   {link.name}
@@ -98,6 +115,7 @@ export default function App() {
             </p>
             <a 
               href="#about"
+              onClick={(e) => handleScrollTo(e, "#about")}
               className="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-full font-medium hover:bg-emerald-800 transition-colors shadow-lg shadow-emerald-900/20"
             >
               Discover Our Project
