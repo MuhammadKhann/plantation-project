@@ -4,7 +4,7 @@
  */
 
 import { motion } from "motion/react";
-import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote, Menu, X } from "lucide-react";
+import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote, Menu, X, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 
 export default function App() {
@@ -252,12 +252,14 @@ export default function App() {
                 title: "Spring Plantation Drive",
                 date: "March 15, 2024 • 9:00 AM",
                 location: "Community Central Park",
+                mapQuery: "Central+Park,+NY",
                 desc: "Help us plant 50 native saplings in the main park. Tools and refreshments will be provided."
               },
               {
                 title: "Sapling Maintenance Day",
                 date: "April 5, 2024 • 10:00 AM",
                 location: "Riverside Trail",
+                mapQuery: "Riverside+Park,+NY",
                 desc: "We will be watering, weeding, and checking up on the trees we planted last season."
               }
             ].map((event, idx) => (
@@ -267,7 +269,7 @@ export default function App() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 hover:shadow-md transition-shadow"
+                className="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 hover:shadow-md transition-shadow flex flex-col"
               >
                 <h3 className="text-xl font-display font-semibold text-stone-900 mb-4">{event.title}</h3>
                 <div className="space-y-3 mb-6">
@@ -280,7 +282,19 @@ export default function App() {
                     <span className="text-sm font-medium">{event.location}</span>
                   </div>
                 </div>
-                <p className="text-stone-600 leading-relaxed text-sm">{event.desc}</p>
+                <p className="text-stone-600 leading-relaxed text-sm flex-grow mb-6">{event.desc}</p>
+                <div className="w-full h-40 rounded-xl overflow-hidden relative bg-stone-100 border border-stone-200 mt-auto">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    scrolling="no"
+                    marginHeight={0}
+                    marginWidth={0}
+                    src={`https://maps.google.com/maps?q=${event.mapQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                    title={event.location}
+                  ></iframe>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -397,6 +411,14 @@ export default function App() {
           <TreePine className="h-10 w-10 text-emerald-600 mb-6" />
           <h2 className="text-2xl font-display font-medium text-stone-200 mb-2">Rooted Community</h2>
           <p className="mb-8">A Civics and Community Management Initiative.</p>
+          <div className="flex items-center gap-4 mb-8">
+            <a href="#" className="p-3 bg-stone-800 text-stone-400 hover:bg-emerald-700 hover:text-white rounded-full transition-colors" aria-label="Instagram">
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a href="#" className="p-3 bg-stone-800 text-stone-400 hover:bg-emerald-700 hover:text-white rounded-full transition-colors" aria-label="Facebook">
+              <Facebook className="h-5 w-5" />
+            </a>
+          </div>
           <div className="w-24 h-px bg-stone-700 mb-8"></div>
           <p className="text-sm">Made by the students, for the planet. &copy; {new Date().getFullYear()}</p>
         </div>
