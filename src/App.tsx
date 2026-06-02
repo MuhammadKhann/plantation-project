@@ -4,9 +4,20 @@
  */
 
 import { motion } from "motion/react";
-import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote } from "lucide-react";
+import { TreePine, Users, Globe, ArrowDown, MessageCircle, Sprout, Award, Heart, Calendar, MapPin, Quote, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Our Goals", href: "#impact" },
+    { name: "Events", href: "#events" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Donate", href: "#donate" },
+  ];
+
   return (
     <div className="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-emerald-200 overflow-x-hidden">
       {/* Navigation */}
@@ -16,14 +27,46 @@ export default function App() {
             <TreePine className="h-6 w-6" />
             <span>Rooted Community</span>
           </div>
+          
+          {/* Desktop Nav */}
           <div className="hidden md:flex gap-6 text-sm font-medium text-stone-600">
-            <a href="#about" className="hover:text-emerald-700 transition">About</a>
-            <a href="#impact" className="hover:text-emerald-700 transition">Our Goals</a>
-            <a href="#events" className="hover:text-emerald-700 transition">Events</a>
-            <a href="#gallery" className="hover:text-emerald-700 transition">Gallery</a>
-            <a href="#donate" className="hover:text-emerald-700 transition">Donate</a>
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className="hover:text-emerald-700 transition">
+                {link.name}
+              </a>
+            ))}
           </div>
+
+          {/* Mobile Nav Toggle */}
+          <button 
+            className="md:hidden p-2 text-stone-600 hover:text-emerald-700 transition"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Nav Menu */}
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden absolute top-16 left-0 right-0 bg-stone-50 border-b border-stone-200 shadow-xl"
+          >
+            <div className="flex flex-col px-6 py-4 space-y-4 text-center font-medium text-stone-600">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block p-2 hover:text-emerald-700 hover:bg-stone-100 rounded-lg transition"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -317,7 +360,7 @@ export default function App() {
               <h3 className="text-2xl font-display font-semibold mb-3 text-stone-800">Donate via WhatsApp</h3>
               <p className="text-stone-500 mb-8">Message us directly to coordinate your donation or get involved.</p>
               <a
-                href="https://wa.me/0307777222"
+                href="https://wa.me/0307777222?text=Hi!%20I%20would%20like%20to%20support%20the%20Rooted%20Community%20tree%20plantation%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-emerald-600 text-white px-8 py-4 rounded-full font-medium hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-600/20 text-lg w-full sm:w-auto justify-center"
@@ -337,7 +380,7 @@ export default function App() {
           <h2 className="text-2xl font-display font-medium text-stone-200 mb-2">Rooted Community</h2>
           <p className="mb-8">A Civics and Community Management Initiative.</p>
           <div className="w-24 h-px bg-stone-700 mb-8"></div>
-          <p className="text-sm">Made by the students, for the planet.</p>
+          <p className="text-sm">Made by the students, for the planet. &copy; {new Date().getFullYear()}</p>
         </div>
       </footer>
     </div>
