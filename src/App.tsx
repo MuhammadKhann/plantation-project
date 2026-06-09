@@ -529,7 +529,7 @@ export default function App() {
           <h2 className="text-2xl font-display font-medium text-stone-200 mb-2">Rooted Community</h2>
           <p className="mb-8">A Civics and Community Management Initiative.</p>
           <div className="flex items-center gap-4 mb-8">
-            <a href="#" className="p-3 bg-stone-800 text-stone-400 hover:bg-emerald-700 hover:text-white rounded-full transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/green_action_society?utm_source=qr&igsh=MTY2ZzN0cWh2N211YQ==" target="_blank" rel="noopener noreferrer" className="p-3 bg-stone-800 text-stone-400 hover:bg-emerald-700 hover:text-white rounded-full transition-colors" aria-label="Instagram">
               <Instagram className="h-5 w-5" />
             </a>
             <a href="#" className="p-3 bg-stone-800 text-stone-400 hover:bg-emerald-700 hover:text-white rounded-full transition-colors" aria-label="Facebook">
